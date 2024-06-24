@@ -1,0 +1,31 @@
+﻿@model IEnumerable<actor>
+@{
+    ViewData["Title"] = "all actors";
+}
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Profile Pic</th>
+            <th>Biography</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var actor in Model)
+        {
+            <tr>
+                <td>@actor.ActorID</td>
+                <td><img src="@actor.ProfilePicUrl"></td>
+                <td>@actor.FullName</td>
+                <td>@actor.Bio</td>
+                <td>
+                    <a asp-action="ActorDetails" asp-route-id="@actor.ActorID">Details</a>
+                    <a asp-action="ActorEdit" asp-route-id="@actor.ActorID">Edit</a>
+                    <a asp-action="ActorDelete" asp-route-id="@actor.ActorID">Delete</a>
+                </td>
+            </tr>
+        }
+    
+    </tbody>
+</table>
